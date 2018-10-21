@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -36,6 +39,11 @@ public class Empleado implements Serializable{
 	@Column(name = "fechaNacimiento")
 	private Date fechaNacimiento;
 	
+
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "ID_DIRECCION")
+	private Direccion direccion;
 	
 	public Empleado (){
 		
@@ -53,6 +61,11 @@ public class Empleado implements Serializable{
 		this.apellidos = apellidos;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	public Empleado (Long codigo){
+		
+		this.codigo = codigo;
 	}
 
 	public Long getCodigo() {
@@ -87,11 +100,24 @@ public class Empleado implements Serializable{
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@Override
+
+
+	public Direccion getDireccion(){
+    	
+    	return direccion;
+    }
+    
+    public void setDireccion(Direccion direccion){
+    	
+    	this.direccion = direccion;
+    }
+
+	
+	
+    @Override
 	public String toString() {
 		return "Empleado [codigo=" + codigo + ", apellidos=" + apellidos + ", nombre=" + nombre + ", fechaNacimiento="
-				+ fechaNacimiento + "]";
+				+ fechaNacimiento + ", direccion=" + direccion + "]";
 	}
-
 	
 }
