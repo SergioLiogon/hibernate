@@ -1,13 +1,14 @@
 package es.sergio.modelo;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 @Entity
 @Table(name = "Direccion")
@@ -29,7 +30,9 @@ public class Direccion {
 	
 	@Column(name = "PAIS")
 	private String PAIS;
-     
+    
+	@OneToOne(mappedBy = "direccion", fetch = FetchType.LAZY)
+	private Empleado empleado;
 	
 
 	public Direccion(){
@@ -94,10 +97,17 @@ public class Direccion {
 		this.PAIS = pais;
 	}
 
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+	
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
 	@Override
 	public String toString() {
 		return "Direccion [id=" + ID_DIRECCION + ", direccion=" + DIRECCION + ", localicad=" + LOCALIDAD + ", provincia="
-				+ PROVINCIA + ", pais=" + PAIS + "]";
+				+ PROVINCIA + ", pais=" + PAIS + " empleado =" +empleado.getCodigo()+ "]";
 	}
 	
     

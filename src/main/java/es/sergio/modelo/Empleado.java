@@ -3,7 +3,7 @@ package es.sergio.modelo;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Basic;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

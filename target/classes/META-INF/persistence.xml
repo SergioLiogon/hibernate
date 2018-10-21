@@ -10,6 +10,9 @@
    <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
         <class>es.sergio.modelo.Empleado</class>
+         <class>es.sergio.modelo.Direccion</class>
+          <class>es.sergio.modelo.Autor</class>
+           <class>es.sergio.modelo.Libro</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
