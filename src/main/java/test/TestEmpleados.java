@@ -26,9 +26,10 @@ public class TestEmpleados {
 		emf = Persistence.createEntityManagerFactory("Persistencia"); //La que esta en el persistence.xml
 		manager = emf.createEntityManager();
 		
-	   Empleado empleado = new Empleado(null,"Javier","Lazcano",  new GregorianCalendar(1996,01,02).getTime());
-        manager.getTransaction().begin();
-        manager.persist(empleado);
+	   Empleado empleado = new Empleado("Javier","Lazcano",  new GregorianCalendar(1996,01,02).getTime());
+	      imprimirTodo(); 
+	   manager.getTransaction().begin();
+        manager.remove(42);
         manager.getTransaction().commit();
         
         imprimirTodo();

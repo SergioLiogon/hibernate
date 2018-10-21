@@ -23,10 +23,9 @@ public class Empleado implements Serializable{
 	private static final long serialVersionUID = 1L;
     
 	@Id
-	
-	@Basic(optional = false)
-	@Column(name = "codigo")
-	private Long codigo;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo", unique=true, nullable = false)
+    private Long codigo;
 	
 	@Column(name = "apellidos")
 	private String apellidos;
@@ -51,8 +50,6 @@ public class Empleado implements Serializable{
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public Empleado(String apellidos, String nombre, Date fechaNacimiento) {
-		
-		
 		this.apellidos = apellidos;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
